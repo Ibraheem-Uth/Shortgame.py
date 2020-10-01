@@ -1,3 +1,6 @@
+from random import randint
+
+
 def short_game():
     print("WELCOME TO THIS SHORT GAME")
     name = input("what's your name ")
@@ -14,14 +17,47 @@ def short_game():
       subject = input("Chose a Subject English/Math ").lower()
       if subject == "english":
         print("Let's move")
-        proceed = input("you will be given a poem to read.\n what do you say? proceed/exit ").lower()
-        if proceed == "proceed":
+        choice = input("What do you prefer,\n poetry/RPS(rock,paper, scissors) ").lower()
+        if choice == "poetry":
           print("9LIVES \n\nTo the boy on the street \nWaging war from within \nTo the girl who refuses \nTo be someone who he abuses \nI offer you nine lives.\n\nby Ibraheem Uthman")
           exit
         else:
+          t = ["Rock", "Paper", "Scissors"]
+          computer = t[randint(0,2)]
+          player = False
+
+          while player == False:
+
+            player = input("Rock, Paper, Scissors?").lower()
+            if player == computer:
+              print("TIE!!!")
+            elif player == "rock":
+                if computer == "paper":
+                  print("You lose!", computer, "covers", player)
+                else:
+                  print("You win!", player, "smashes", computer)
+            elif player == "paper":
+                if computer == "scissors":
+                   print("You lose!", computer, "cuts", player)
+                else:   
+                   print("You win!", player, "covers", computer)  
+            elif player == "scissors":
+                if computer == "rock":
+                  print("You lose!", computer, "smashes", player)
+                else:
+                  print("You win", player, "cuts", computer)
+            else:
+                print("That's not a valid play, check your spelling")
+
+            player = False
+
+            computer = t[randint(0,2)]    
+                 
+
+
           exit
       else:
-        print("Let's do this Mathematician")
+        print("Let's do this, Mathematician")
         topic = input("What topic do you prefer? fibonacci/AreaOfaTriangle ").lower()
         if topic == "fibonacci":
           exec
